@@ -27,4 +27,7 @@ DemoApp/Config.xcconfig
 
 TwitterKit/iphoneos/
 TwitterKit/iphonesimulator/
+TwitterCore/iphoneos/
+TwitterCore/iphonesimulator/
+TwitterKit.zip
 
