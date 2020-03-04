@@ -132,7 +132,9 @@ typedef NS_ENUM(NSUInteger, TWTRSEURLAttachmentLoadState) { TWTRSEURLAttachmentL
     [self.linkDomainLabel.topAnchor constraintEqualToAnchor:self.linkTitleLabel.bottomAnchor].active = YES;
     [self.linkDomainLabel.bottomAnchor constraintEqualToAnchor:self.labelsContainerView.bottomAnchor].active = YES;
 
-    [self.heightAnchor constraintEqualToAnchor:self.linkPreviewImageView.heightAnchor];
+    // Need to get around unused warning
+    NSLayoutConstraint *ignore = [self.heightAnchor constraintEqualToAnchor:self.linkPreviewImageView.heightAnchor];
+    ignore = ignore;
 }
 
 @end

@@ -55,6 +55,12 @@
     _tweetView = [[TWTRTweetView alloc] initWithTweet:nil style:TWTRTweetViewStyleCompact];
     _tweetView.translatesAutoresizingMaskIntoConstraints = NO;
     _tweetView.showBorder = NO;
+    if (@available(iOS 13, *)) {
+        if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            _tweetView.theme = TWTRTweetViewThemeDark;
+        }
+    }
+
     [self.contentView addSubview:_tweetView];
 
     NSDictionary *views = @{ @"tweetView": _tweetView };
