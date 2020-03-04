@@ -28,6 +28,6 @@ lipo -create -output iOS/TwitterKit.framework/TwitterKit TwitterKit/iphoneos/Twi
 lipo -archs iOS/TwitterKit.framework/TwitterKit
 
 ## Zip them into TwitterKit.zip
-rm TwitterKit.zip
+rm -f TwitterKit.zip
 zip -r TwitterKit.zip iOS/*
 rm -rf iOS
