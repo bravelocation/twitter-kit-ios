@@ -1,3 +1,32 @@
+**How to use the customized TwitterKit pod**
+```
+pod 'TwitterKit5'
+```
+
+**How to build and use the customized TwitterKit pod**
+1. Build TwitterKit.zip. In the root folder of the project, run
+```
+./build.sh
+```
+2. Upload the TwitterKit.zip file somewhere and get a [URL](https://swarm-dev.s3.amazonaws.com/pods/twitterkit/ios/5.0.0/TwitterKit.zip) points to it.
+3. Change your [podspec file](https://raw.githubusercontent.com/touren/twitter-kit-ios/Swift5/TwitterKit/TwitterKit.podspec) as:  s.source = { :http => "<URL created in step 2>" }
+4. Change your Podfile as: `pod "TwitterKit"` ==> `pod "TwitterKit", :podspec => "<URL point to the podspec created in step 3>"`
+
+
+**How to build and push to CocoaPods TwitterKit5**
+1. Build TwitterKit.zip. In the root folder of the project, run
+```
+./build.sh
+```
+2. Release a new version in [GitHub](https://github.com/touren/twitter-kit-ios/releases), say 5.0.2, upload the TwitterKit.zip just built.
+3. Update TwitterKit5.podspec, make sure `s.version` and `s.source` is correct.
+4. Deploy to [CocoaPods Trunk](https://guides.cocoapods.org/making/getting-setup-with-trunk.html)
+```
+pod trunk push TwitterKit5.podspec
+```
+
+----
+
 **Twitter will be discontinuing support for Twitter Kit on October 31, 2018. [Read the blog post here](https://blog.twitter.com/developer/en_us/topics/tools/2018/discontinuing-support-for-twitter-kit-sdk.html).**
 
 # Twitter Kit for iOS
