@@ -55,11 +55,7 @@
     _tweetView = [[TWTRTweetView alloc] initWithTweet:nil style:TWTRTweetViewStyleCompact];
     _tweetView.translatesAutoresizingMaskIntoConstraints = NO;
     _tweetView.showBorder = NO;
-    if (@available(iOS 13, *)) {
-        if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-            _tweetView.theme = TWTRTweetViewThemeDark;
-        }
-    }
+    [self updateTweetViewTheme];
 
     [self.contentView addSubview:_tweetView];
 
@@ -84,6 +80,20 @@
 + (CGFloat)heightForTweet:(TWTRTweet *)tweet style:(TWTRTweetViewStyle)style width:(CGFloat)width showingActions:(BOOL)actionsAreVisible
 {
     return [TWTRTweetViewSizeCalculator heightForTweet:tweet style:style fittingWidth:width showingActions:actionsAreVisible];
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [self updateTweetViewTheme];
+}
+
+- (void) updateTweetViewTheme {
+    if (@available(iOS 13, *)) {
+        if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            _tweetView.theme = TWTRTweetViewThemeDark;
+        } else {
+            _tweetView.theme = TWTRTweetViewThemeLight;
+        }
+    }
 }
 
 @end
